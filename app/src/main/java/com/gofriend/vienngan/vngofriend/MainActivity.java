@@ -13,8 +13,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.gofriend.vienngan.vngofriend.adapter.SlidingImageAdapter;
 
@@ -58,17 +61,36 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View viewNavigationView = navigationView.getHeaderView(0);
+
         boolean isLogin = false;
         if (isLogin) {
             navigationView.addHeaderView(View.inflate(getApplicationContext(), R.layout.nav_header_main, null));
+            View viewNavigationView = navigationView.getHeaderView(0);
         } else {
             navigationView.addHeaderView(View.inflate(getApplicationContext(), R.layout.nav_header_login_main, null));
+            View viewNavigationView = navigationView.getHeaderView(0);
+            Button btnLogin = (Button) viewNavigationView.findViewById(R.id.btn_login);
+            btnLogin.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            });
         }
         navigationView.setNavigationItemSelectedListener(this);
 
     }
 
+    private Handler handler = new Handler();
+    private Runnable Update = new Runnable() {
+        public void run() {
+            if (currentPage == 6 - 1) {
+                currentPage = 0;
+            }
+            mViewPager.setCurrentItem(currentPage++, true);
+        }
+    };
     /**
      * Show slide
      */
@@ -77,16 +99,6 @@ public class MainActivity extends AppCompatActivity
 
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSlidingImageAdapter);
-        final Handler handler = new Handler();
-
-        final Runnable Update = new Runnable() {
-            public void run() {
-                if (currentPage == 6 - 1) {
-                    currentPage = 0;
-                }
-                mViewPager.setCurrentItem(currentPage++, true);
-            }
-        };
 
         swipeTimer = new Timer();
         swipeTimer.schedule(new TimerTask() {
@@ -156,4 +168,15 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        swipeTimer.cancel();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        swipeTimer.cancel();
+    }
 }
