@@ -12,4 +12,9 @@
     <string name="time_out">Time Out</string>
     <string name="error_occured">Error Occurred</string>
 
+    <!--Value key Parse.com-->
+    <string name="parse_app_id">zygXHRutyTrAtEWObzRI4GDBs9IIjTCJAUfxYJPP</string>
+    <string name="parse_client_key">NGTPzzpfWc0qrkXk7azEaKlWWFEPXvLnVzpsTNKj</string>
+
+
 </resources>
