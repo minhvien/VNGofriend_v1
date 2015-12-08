@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 
 import com.gofriend.vienngan.vngofriend.adapter.SlidingImageAdapter;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity
         //End SlideShow
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -55,7 +56,15 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View viewNavigationView = navigationView.getHeaderView(0);
+        boolean isLogin = false;
+        if (isLogin) {
+            navigationView.addHeaderView(View.inflate(getApplicationContext(), R.layout.nav_header_main, null));
+        } else {
+            navigationView.addHeaderView(View.inflate(getApplicationContext(), R.layout.nav_header_login_main, null));
+        }
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     /**
@@ -139,7 +148,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
