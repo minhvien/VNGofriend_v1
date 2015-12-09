@@ -1,4 +1,4 @@
-package com.gofriend.vienngan.vngofriend;
+package com.gofriend.vienngan.vngofriend.activity;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.gofriend.vienngan.vngofriend.R;
 import com.gofriend.vienngan.vngofriend.adapter.SlidingImageAdapter;
 
 import java.util.Timer;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //Start SlideShow
-        slideShow();
+//        slideShow();
         //End SlideShow
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             btnLogin.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_SHORT).show();
+//                    ParseUser user =
                     return false;
                 }
             });
@@ -171,12 +171,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         super.onStop();
-        swipeTimer.cancel();
+//        swipeTimer.cancel();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        swipeTimer.cancel();
-    }
+
 }

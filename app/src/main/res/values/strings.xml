@@ -15,6 +15,7 @@
     <!--Value key Parse.com-->
     <string name="parse_app_id">zygXHRutyTrAtEWObzRI4GDBs9IIjTCJAUfxYJPP</string>
     <string name="parse_client_key">NGTPzzpfWc0qrkXk7azEaKlWWFEPXvLnVzpsTNKj</string>
+    <string name="ProgressTitle_Login">Waiting to Login....</string>
 
 
 </resources>
