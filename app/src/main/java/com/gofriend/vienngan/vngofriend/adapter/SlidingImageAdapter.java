@@ -19,12 +19,12 @@ public class SlidingImageAdapter extends PagerAdapter {
     LayoutInflater mLayoutInflater;
 
     int[] mResources = {
-            R.drawable.h1,
-            R.drawable.h2,
-            R.drawable.h2,
-            R.drawable.h1,
-            R.drawable.h2,
-            R.drawable.h1
+//            R.drawable.h1,
+//            R.drawable.h2,
+//            R.drawable.h2,
+//            R.drawable.h1,
+//            R.drawable.h2,
+//            R.drawable.h1
     };
 
     public SlidingImageAdapter(Context context) {
